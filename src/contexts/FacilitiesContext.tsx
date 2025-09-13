@@ -105,7 +105,7 @@ const sampleUtilities: WasteUtility[] = [
     description: 'Color-coded 3-bin set with smart sensors',
     price: 2499,
     category: 'dustbin',
-    image: 'https://images.pexels.com/photos/4099354/pexels-photo-4099354.jpeg',
+    image: 'https://images.pexels.com/photos/6230990/pexels-photo-6230990.jpeg',
     inStock: true,
     rating: 4.5,
     reviews: 234
@@ -116,7 +116,7 @@ const sampleUtilities: WasteUtility[] = [
     description: 'Complete kit for home composting with instructions',
     price: 1299,
     category: 'compost_kit',
-    image: 'https://images.pexels.com/photos/4099354/pexels-photo-4099354.jpeg',
+    image: 'https://images.pexels.com/photos/4503273/pexels-photo-4503273.jpeg',
     inStock: true,
     rating: 4.3,
     reviews: 156
@@ -127,9 +127,42 @@ const sampleUtilities: WasteUtility[] = [
     description: 'Eco-friendly waste collection bags (pack of 50)',
     price: 299,
     category: 'recycling_bag',
-    image: 'https://images.pexels.com/photos/4099354/pexels-photo-4099354.jpeg',
+    image: 'https://images.pexels.com/photos/4099238/pexels-photo-4099238.jpeg',
     inStock: true,
     rating: 4.1,
+    reviews: 89
+  },
+  {
+    id: 'u4',
+    name: 'Waste Worker Safety Kit',
+    description: 'Complete PPE kit with gloves, mask, and protective gear',
+    price: 899,
+    category: 'safety_gear',
+    image: 'https://images.pexels.com/photos/4099354/pexels-photo-4099354.jpeg',
+    inStock: true,
+    rating: 4.7,
+    reviews: 67
+  },
+  {
+    id: 'u5',
+    name: 'Kitchen Waste Composter',
+    description: 'Compact electric composter for kitchen organic waste',
+    price: 3999,
+    category: 'compost_kit',
+    image: 'https://images.pexels.com/photos/6230991/pexels-photo-6230991.jpeg',
+    inStock: true,
+    rating: 4.4,
+    reviews: 123
+  },
+  {
+    id: 'u6',
+    name: 'Recycling Sorting Bins',
+    description: 'Set of 4 color-coded bins for different waste types',
+    price: 1899,
+    category: 'dustbin',
+    image: 'https://images.pexels.com/photos/3735218/pexels-photo-3735218.jpeg',
+    inStock: true,
+    rating: 4.2,
     reviews: 89
   }
 ];

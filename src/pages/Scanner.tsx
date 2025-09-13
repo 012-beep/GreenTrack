@@ -58,9 +58,11 @@ export default function Scanner() {
             }
             
             // Organic waste detection (brown, green, varied natural colors)
-            else if ((r > 80 && r < 180 && g > 60 && g < 140 && b < 100) || // Brown organic
-                     (g > r && g > b && g > 80 && g < 200) || // Green organic
-                     (r > 150 && g > 100 && b < 120)) { // Food waste colors
+            else if ((r > 60 && r < 200 && g > 80 && g < 220 && b > 40 && b < 160) || // Brown/green organic range
+                     (g > r + 20 && g > b + 10 && g > 70 && g < 220) || // Green vegetation
+                     (r > 120 && r < 220 && g > 80 && g < 180 && b > 30 && b < 140) || // Brown food waste
+                     (r > 100 && g > 120 && b > 60 && Math.abs(r - g) < 60) || // Natural mixed colors
+                     (r > 140 && r < 200 && g > 100 && g < 160 && b > 50 && b < 120)) { // Fruit/vegetable colors
               colorAnalysis.organic++;
             }
             
@@ -72,19 +74,21 @@ export default function Scanner() {
             }
             
             // Metal detection (metallic gray, silver, reflective)
-            else if ((Math.abs(r - g) < 20 && Math.abs(g - b) < 20 && brightness > 100 && brightness < 200) || // Silver/gray metal
-                     (r > 140 && g > 110 && b < 120) || // Copper/bronze/rust
-                     (brightness > 160 && Math.abs(r - g) < 15 && Math.abs(g - b) < 15) || // Reflective metal
-                     (r > 100 && r < 160 && g > 100 && g < 160 && b > 80 && b < 140)) { // General metallic colors
+            else if ((Math.abs(r - g) < 25 && Math.abs(g - b) < 25 && brightness > 80 && brightness < 220) || // Gray metal range
+                     (r > 120 && r < 200 && g > 90 && g < 170 && b > 60 && b < 140) || // Copper/bronze metals
+                     (brightness > 140 && Math.abs(r - g) < 30 && Math.abs(g - b) < 30) || // Bright reflective metal
+                     (r > 80 && r < 180 && g > 80 && g < 180 && b > 70 && b < 170 && Math.abs(r - g) < 40) || // General metallic
+                     (brightness > 180 && Math.abs(r - g) < 20 && Math.abs(g - b) < 20)) { // Very reflective surfaces
               colorAnalysis.metal++;
             }
             
             // Glass detection (transparent, green, brown glass)
-            else if ((r > 200 && g > 200 && b > 200) || // Clear/white glass
-                     (r > 180 && g > 200 && b > 180 && g > r && g > b) || // Green glass
-                     (r > 140 && g > 100 && b < 100 && r > g) || // Brown glass
-                     (Math.abs(r - g) < 30 && Math.abs(g - b) < 30 && brightness > 150) || // Clear glass variations
-                     (g > r + 20 && g > b + 10 && g > 100 && g < 180)) { // Green glass variations
+            else if ((brightness > 180 && Math.abs(r - g) < 40 && Math.abs(g - b) < 40) || // Clear glass (very bright)
+                     (g > r + 15 && g > b + 10 && g > 80 && g < 200 && brightness > 120) || // Green glass
+                     (r > 120 && r < 200 && g > 80 && g < 160 && b > 40 && b < 120 && r > g) || // Brown glass
+                     (brightness > 160 && (Math.abs(r - g) < 50 || Math.abs(g - b) < 50)) || // Transparent variations
+                     (r > 150 && g > 180 && b > 150 && g > r && g > b) || // Light green glass
+                     (brightness > 200 && Math.abs(r - g) < 30 && Math.abs(g - b) < 30)) { // Very clear glass
               colorAnalysis.glass++;
             }
             
@@ -135,12 +139,12 @@ export default function Scanner() {
               let confidence = Math.min(95, 35 + waste.percentage * 2.5);
               
               // Adjust confidence based on texture complexity
-              if (waste.type === 'plastic' && textureComplexity < 20) confidence += 10; // Smooth plastic surfaces
-              if (waste.type === 'metal' && (edgeCount > 12 || brightnessVariation > 35)) confidence += 18; // Sharp metallic edges or reflective
-              if (waste.type === 'organic' && textureComplexity > 30) confidence += 10; // Varied organic textures
-              if (waste.type === 'paper' && (brightnessVariation < 35 || (r > 180 && g > 180 && b > 160))) confidence += 12; // Uniform paper or white paper
-              if (waste.type === 'glass' && (brightnessVariation > 35 || brightness > 160)) confidence += 15; // Reflective or transparent glass
-              if (waste.type === 'ewaste' && edgeCount > 20) confidence += 10; // Complex electronic patterns
+              if (waste.type === 'plastic' && textureComplexity < 20) confidence += 12; // Smooth plastic surfaces
+              if (waste.type === 'metal' && (edgeCount > 10 || brightnessVariation > 30)) confidence += 25; // Sharp metallic edges or reflective
+              if (waste.type === 'organic' && textureComplexity > 25) confidence += 15; // Varied organic textures
+              if (waste.type === 'paper' && (brightnessVariation < 40 || brightness > 170)) confidence += 18; // Uniform paper or white paper
+              if (waste.type === 'glass' && (brightnessVariation > 30 || brightness > 150)) confidence += 20; // Reflective or transparent glass
+              if (waste.type === 'ewaste' && edgeCount > 15) confidence += 12; // Complex electronic patterns
               
               // Ensure realistic confidence range
               confidence = Math.max(40, Math.min(95, confidence));
