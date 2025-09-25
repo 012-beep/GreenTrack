@@ -1,0 +1,19 @@
+image,predicted_class,confidence,top3
+cardboard1.jpg,cardboard,0.8823,cardboard:0.8823; paper:0.1174; plastic:0.0003
+cardboard2.jpg,plastic,0.4207,plastic:0.4207; cardboard:0.3883; trash:0.1541
+cardboard3.jpg,cardboard,0.9999,cardboard:0.9999; paper:0.0001; plastic:0.0000
+glass1.jpg,glass,0.9989,glass:0.9989; metal:0.0007; plastic:0.0002
+glass2.jpg,glass,0.9795,glass:0.9795; plastic:0.0204; trash:0.0000
+glass3.jpg,glass,0.9926,glass:0.9926; plastic:0.0072; paper:0.0001
+metal1.jpg,metal,0.9187,metal:0.9187; glass:0.0811; plastic:0.0002
+metal2.jpg,metal,0.6757,metal:0.6757; glass:0.3143; plastic:0.0089
+metal3.jpg,glass,0.8688,glass:0.8688; metal:0.0820; plastic:0.0490
+paper1.jpg,paper,0.6617,paper:0.6617; plastic:0.3292; trash:0.0051
+paper2.jpg,paper,1.0000,paper:1.0000; plastic:0.0000; cardboard:0.0000
+paper3.jpg,paper,0.9888,paper:0.9888; plastic:0.0070; glass:0.0022
+plastic1.jpg,plastic,0.7255,plastic:0.7255; glass:0.2586; metal:0.0153
+plastic2.jpg,plastic,0.9765,plastic:0.9765; glass:0.0231; trash:0.0002
+plastic3.jpg,plastic,0.9981,plastic:0.9981; paper:0.0012; glass:0.0006
+trash1.jpg,plastic,0.9675,plastic:0.9675; paper:0.0147; metal:0.0134
+trash2.jpg,trash,0.2787,trash:0.2787; plastic:0.2648; glass:0.2156
+trash3.jpg,trash,0.9199,trash:0.9199; plastic:0.0652; glass:0.0098
